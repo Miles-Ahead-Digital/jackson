@@ -1,5 +1,7 @@
 package milesahead.jackson;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -11,6 +13,7 @@ public class Jackson {
 
     private static final String DATE_FORMATTER= "yyyy-MM-dd HH:mm:ss";
 
+    @JsonSerialize(keyUsing = JacksonLocalDateTimeSerializer.class)
     SortedMap<LocalDateTime, Float> timeseries = new TreeMap<>();
 
     public SortedMap<LocalDateTime, Float> getTimeseries() {
